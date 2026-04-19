@@ -46,7 +46,7 @@ function drawBox(size, color) { //Draw a box surrounding anchor modulo 10m, at s
   var s2 = Math.abs(size)/2
   var u = toUTM(anchor) // UTM of anchor: u.Eing & u.Ning; NB: also sets u.Zone
   var uEm = u.Eing -= u.Eing%10, uNm = u.Ning -= u.Ning%10  // round down to 10m cell
-  box[0] = toLL({lng:uEm -(size<0?0:s2), lat:uNm -(size<0?0:s2), u.Zone)
+  box[0] = toLL({lng:uEm -(size<0?0:s2), lat:uNm -(size<0?0:s2)}, u.Zone)
   box[1] = toLL({lng:box[0].lng +2*s2, lat:box[0].lat}, u.Zone)
   box[2] = toLL({lng:box[1].lng, lat:box[1].lat +2*s2}, u.Zone)
   box[3] = toLL({lng:box[0].lng, lat:box[2].lat}, u.Zone)
