@@ -56,9 +56,10 @@ function drawBox(size, color) {
   box[2] = toLL({Eing:uEm +2*s2, Ning:uNm +2*s2}, u.Zone)
   box[3] = toLL({Eing:uEm +0, Ning:uNm +2*s2}, u.Zone)
   box.push(box[0])
-  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2, map })
+  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:1.5, map })
 }
-  function centerMap(LL) { mat.setCenter(LL) }
+  
+  function centerMap(LL) { map.setCenter(LL) }
 
   function zoomMap(level) { map.setZoom(level) }
 
