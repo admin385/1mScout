@@ -11,24 +11,37 @@
 
 <link rel="stylesheet" type="text/css" href='style.css' />
   
-<!-- script src="UTMProj.js"> </script -->
+<script src="UTMProj.js"> </script>
 <!-- script src="maplabel1.js"> </script -->
 
 <script>
+
+const R_deg = Math.PI / 180  // Radians per degree
+const deg_m = 90 / 1e7  // degrees per m
+
 const anchor = { lng:-117.86359, lat:33.66848 }, icon = 'plus-sign2t.png', level = 17, title = "WFBank"
-var map, zoom
+var map, tile=[]
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), { center:anchor, zoom:level, });
   new google.maps.Marker({ icon:icon, position: anchor, title: title, map, });
+  var u = toUTM(anchor); u.Eing -= u.Eing%10; u.Ning -= u.Ning%10  // 
+  cosLat = Math.cos(anchor.lat*R_deg)
+  tile[0] = {lng:(anchor.lng -(500*deg_m)/cosLat), lat:(anchor.lat -(500*deg_m))}
+  tile[1] = {lng:(anchor.lng +(500*deg_m)/cosLat), lat:(anchor.lat -(500*deg_m))}
+  tile[2] = {lng:(anchor.lng +(500*deg_m)/cosLat), lat:(anchor.lat +(500*deg_m))}
+  tile[3] = {lng:(anchor.lng -(500*deg_m)/cosLat), lat:(anchor.lat +(500*deg_m))}
+  tile.push(tile[0])
+  new google.maps.Polyline({ path: tile, strokeColor: '#f00', strokeWeight:2, map, })
 }
+  
 function zoomMap(level) {map.setZoom(level)}
 </script>
 
 </head>
 
 <body style="height:100%; margin:0; padding:0;">
-Zoom: <input value=17 onChange="zoomMap(parseFloat(this.value))">
+Zoom: <input size=5 value=17 onChange="zoomMap(parseFloat(this.value))">
 <hr size=1>
 <div id=map style="height:100%"> </div>
 
