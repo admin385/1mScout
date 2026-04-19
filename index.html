@@ -27,7 +27,7 @@ function initMap() {
   new google.maps.Marker({ icon:icon, position:anchor, title:title, map, })
   drawTile()
   drawBox(500, "#f0f")
-  drawBox(-10,"#ff0")
+  drawBox(-10, "#ff0")
 }
   
 function drawTile() { //Draw 1x1 km tile
@@ -47,12 +47,12 @@ function drawBox(size, color) { //Draw a box surrounding anchor modulo 10m, at s
   var u = toUTM(anchor) // UTM of anchor: u.Eing & u.Ning; NB: also sets u.Zone
   var uEm = u.Eing -= u.Eing%10, uNm = u.Ning -= u.Ning%10  // round down to 10m cell
   uEm = uEm -(size<0?0:s2); uNm = uNm -(size<0?0:s2) // set LL corner
-  box[0] = toLL({Eing:uEm +0, Ning:uNm +0}, u.Zone)
+  box[0] = toLL({Eing:uEm +0, Ning:uNm +0}, u.Zone); console.log(box[0])
   box[1] = toLL({Eing:uEm +2*s2, Ning:uNm +0}, u.Zone)
   box[2] = toLL({Eing:uEm +2*s2, Ning:uNm +2*s2}, u.Zone)
   box[3] = toLL({Eing:uEm +0, Ning:uNm +2*s2}, u.Zone)
   tile.push(box[0])
-  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2,}).setMap(map)
+  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2, map })
 }
   
 function zoomMap(level) {map.setZoom(level)}
