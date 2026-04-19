@@ -12,26 +12,24 @@
 <!-- script src="UTMProj.js"> </script -->
 <!-- script src="maplabel1.js"> </script -->
 
-function initMap() {
-  const anchor = { lng:-117.86359, lat:33.66848 };
-  const map = new google.maps.Map(document.getElementById("map"), { zoom:17, center:anchor,});
+const anchor = { lng:-117.86359, lat:33.66848 }, initZoom = 17
+var map, zoom
 
-  new google.maps.Marker({
-    position: anchor,
-    title: "WFBank",
-    map,
-  });
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), { center:anchor, zoom:initZoom, });
+  new google.maps.Marker({ icon:'xx', position: anchor, title: "WFBank", map, });
 }
+function zoomMap(level) {map.setZoom(level)}
 
 
 </head>
 
-<body style="height:100%; margin:0; padding:0;>
-<input value=17 onChange="initMap()>
+<body style="height:100%; margin:0; padding:0;">
+Zoom: <input value=17 onChange="zoomMap(parseFloat(this.value))">
 <hr size=1>
-<div id=map style="height:100%">
+<div id=map style="height:100%"> </div>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmrLN2z0y1M2Dg8hvhfBckywh_kDXQC_k" async callback="initMap"> </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmrLN2z0y1M2Dg8hvhfBckywh_kDXQC_k&callback=initMap" defer> </script>
   
 </body>
