@@ -50,7 +50,8 @@ function drawBox(modulus, color) { //Draw a box surrounding anchor at modulus di
   box[2] = toLL({lng:uEmod +modulus/2, lat:uNmod +modulus/2}, U.Zone)
   box[3] = toLL({lng:uEmod +0, lat:uNmod +modulus/2}, U.Zone)
   tile.push(box[0])
-  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2, map, })  
+  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2, map, })
+}
   
 function zoomMap(level) {map.setZoom(level)}
 
