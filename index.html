@@ -12,10 +12,29 @@
 <script src="UTMProj.js"> </script>
 <script src="maplabel1.js"> </script>
 
+function initMap() {
+  const anchor = { lat: -25.363, lng: 131.044 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 17,
+    center: anchor,
+  });
+
+  new google.maps.Marker({
+    position: anchor,
+    title: "WFBank",
+    map,
+  });
+}
+
+
 </head>
 
 <body>
+<input value=18 onChange="initMap()>
+<hr size=1>
+<div id=map style="height:100%">
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmrLN2z0y1M2Dg8hvhfBckywh_kDXQC_k" async defer="initmap()"> </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmrLN2z0y1M2Dg8hvhfBckywh_kDXQC_k" async callback="initmap"> </script>
   
 </body>
