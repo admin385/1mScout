@@ -58,15 +58,17 @@ function drawBox(size, color) {
   box.push(box[0])
   new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2, map })
 }
-  
-function zoomMap(level) {map.setZoom(level)}
+  function centerMap(LL) { mat.setCenter(LL) }
+
+  function zoomMap(level) { map.setZoom(level) }
 
 </script>
 
 </head>
 
 <body style="height:100%; margin:0; padding:0;">
-Zoom: <input size=5 value=16 onChange="zoomMap(parseFloat(this.value))">
+<-- &nbsp;Anchor: <input value=16 onChange="centerMap(parseFloat(this.value))" -->
+&nbsp; "Zoom: <input size=5 value=16 onChange="zoomMap(parseFloat(this.value))">
 <hr size=1>
 <div id=map style="height:100%"> </div>
 
