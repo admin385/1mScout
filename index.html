@@ -9,15 +9,12 @@
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="-1">
 
-<script src="UTMProj.js"> </script>
-<script src="maplabel1.js"> </script>
+<!-- script src="UTMProj.js"> </script -->
+<!-- script src="maplabel1.js"> </script -->
 
 function initMap() {
-  const anchor = { lat: -25.363, lng: 131.044 };
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 17,
-    center: anchor,
-  });
+  const anchor = { lng:-117.86359, lat:33.66848 };
+  const map = new google.maps.Map(document.getElementById("map"), { zoom:17, center:anchor,});
 
   new google.maps.Marker({
     position: anchor,
@@ -29,12 +26,12 @@ function initMap() {
 
 </head>
 
-<body>
-<input value=18 onChange="initMap()>
+<body style="height:100%; margin:0; padding:0;>
+<input value=17 onChange="initMap()>
 <hr size=1>
 <div id=map style="height:100%">
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmrLN2z0y1M2Dg8hvhfBckywh_kDXQC_k" async callback="initmap"> </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmrLN2z0y1M2Dg8hvhfBckywh_kDXQC_k" async callback="initMap"> </script>
   
 </body>
