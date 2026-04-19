@@ -20,7 +20,7 @@ const R_deg = Math.PI / 180  // Radians per degree
 const deg_m = 90 / 1e7  // degrees per m
 
 var anchor = { lat:33.66848 ,lng:-117.86359 }, icon = 'plus-sign2t.png', level = 16, title = "WFBank"
-var map, mark
+var map, mark, tile, cell
 
 function initMap() {
 // Initialize (create) the map, showing anchor
@@ -28,8 +28,8 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), { center:anchor, zoom:level, })
   mark = new google.maps.Marker({ icon:icon, position:anchor, title:title, map, })
 //drawATile()
-  drawBox(1000, "#f0f")
-  drawBox(-10, "#ff0")
+  tile = drawBox(1000, "#f0f")
+  cell = drawBox(-10, "#ff0")
 }
   
 function drawATile() {
@@ -57,7 +57,7 @@ function drawBox(size, color) {
   box[2] = toLL({Eing:uEm +2*s2, Ning:uNm +2*s2}, u.Zone)
   box[3] = toLL({Eing:uEm +0, Ning:uNm +2*s2}, u.Zone)
   box.push(box[0])
-  new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:1.5, map })
+  return new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:1.5, map })
 }
   
   function shiftMap(th) {
@@ -65,6 +65,8 @@ function drawBox(size, color) {
     var t = th.replaceAll(" ",""), i = t.indexOf(",")
     map.setCenter(anchor = new google.maps.LatLng(parseFloat(t.slice(0,i)), parseFloat(t.slice(i+1))))
     mark.setMap(); mark = new google.maps.Marker({ icon:icon, position:anchor, title:"", map, })
+    tile.setMap(); tile = drawBox(1000, "#f0f")
+    cell.setMap(); cell = drawBox(-10, "#ff0")
   }
 
   function zoomMap(th) {
