@@ -43,12 +43,12 @@ function drawTile() { //Draw 1x1 km tile
 
 function drawBox(modulus, color) { //Draw a box surrounding anchor at modulus distance from it
   const box=[]
-  var u = toUTM(anchor) // UTM of anchor; NB: sets U.Zone
+  var u = toUTM(anchor) // UTM of anchor; NB: sets u.Zone
   var uEmod = u.Eing -= u.Eing%modulus, uNmod = u.Ning -= u.Ning%modulus  // round down
-  box[0] = toLL({lng:uEmod +0, lat:uNmod +0}, U.Zone)
-  box[1] = toLL({lng:uEmod +modulus/2, lat:uNmod +0}, U.Zone)
-  box[2] = toLL({lng:uEmod +modulus/2, lat:uNmod +modulus/2}, U.Zone)
-  box[3] = toLL({lng:uEmod +0, lat:uNmod +modulus/2}, U.Zone)
+  box[0] = toLL({lng:uEmod +0, lat:uNmod +0}, u.Zone)
+  box[1] = toLL({lng:uEmod +modulus/2, lat:uNmod +0}, u.Zone)
+  box[2] = toLL({lng:uEmod +modulus/2, lat:uNmod +modulus/2}, u.Zone)
+  box[3] = toLL({lng:uEmod +0, lat:uNmod +modulus/2}, u.Zone)
   tile.push(box[0])
   new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:2, map, })
 }
