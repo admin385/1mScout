@@ -12,6 +12,7 @@
 <!-- script src="UTMProj.js"> </script -->
 <!-- script src="maplabel1.js"> </script -->
 
+<script>
 const anchor = { lng:-117.86359, lat:33.66848 }, icon = 'plus-sign2t.png', level = 17, title = "WFBank"
 var map, zoom
 
@@ -20,7 +21,7 @@ function initMap() {
   new google.maps.Marker({ icon:icon, position: anchor, title: title, map, });
 }
 function zoomMap(level) {map.setZoom(level)}
-
+</script>
 
 </head>
 
