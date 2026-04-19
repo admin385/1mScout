@@ -28,9 +28,9 @@ function initMap() {
   drawTile()
 }
   
-drawTile() { //Draw 1x1 km tile
+function drawTile() { //Draw 1x1 km tile
   var u = toUTM(anchor); u.Eing -= u.Eing%10; u.Ning -= u.Ning%10  // UTM of anchor; sets U.Zone 
-  cosLat = Math.cos(anchor.lat*R_deg)
+  var cosLat = Math.cos(anchor.lat*R_deg)
   tile[0] = {lng:(anchor.lng -(500*deg_m)/cosLat), lat:(anchor.lat -(500*deg_m))}
   tile[1] = {lng:(anchor.lng +(500*deg_m)/cosLat), lat:(anchor.lat -(500*deg_m))}
   tile[2] = {lng:(anchor.lng +(500*deg_m)/cosLat), lat:(anchor.lat +(500*deg_m))}
