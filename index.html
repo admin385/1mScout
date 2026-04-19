@@ -44,8 +44,8 @@ function drawTile() { //Draw 1x1 km tile
 function drawBox(size, color) { //Draw a box surrounding anchor modulo 10m, at size distance from anchor (+sided if negative)
   const box=[]
   var s2 = Math.abs(size)/2
-  var u = toUTM(anchor) // UTM of anchor: u.Eing & u.Ning; NB: also sets u.Zone
-  var uEm = u.Eing -= u.Eing%10, uNm = u.Ning -= u.Ning%10  // round down to 10m cell
+  var u = toUTM(anchor); console.log(u) // UTM of anchor: u.Eing & u.Ning; NB: also sets u.Zone
+  var uEm = u.Eing -= u.Eing%10, uNm = u.Ning -= u.Ning%10; console.log(uEm, uNm)  // round down to 10m cell
   uEm = uEm -(size<0?0:s2); uNm = uNm -(size<0?0:s2) // set LL corner
   box[0] = toLL({Eing:uEm +0, Ning:uNm +0}, u.Zone); console.log(box[0])
   box[1] = toLL({Eing:uEm +2*s2, Ning:uNm +0}, u.Zone)
