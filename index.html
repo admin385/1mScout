@@ -19,7 +19,7 @@
 const R_deg = Math.PI / 180  // Radians per degree
 const deg_m = 90 / 1e7  // degrees per m
 
-const anchor = { lat:33.66848 ,lng:-117.86359 }, icon = 'plus-sign2t.png', level = 16, title = "WFBank"
+var anchor = { lat:33.66848 ,lng:-117.86359 }, icon = 'plus-sign2t.png', level = 16, title = "WFBank"
 var map, mark
 
 function initMap() {
@@ -64,8 +64,7 @@ function drawBox(size, color) {
   // Re-anchor the map
     var t = th.replaceAll(" ",""), i = t.indexOf(",")
     map.setCenter(anchor = new google.maps.LatLng(parseFloat(t.slice(0,i)), parseFloat(t.slice(i+1))))
-    mark = new google.maps.Marker({ icon:icon, position:anchor, title:"", map, })
-
+    mark.setMap(); mark = new google.maps.Marker({ icon:icon, position:anchor, title:"", map, })
   }
 
   function zoomMap(th) {
