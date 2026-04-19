@@ -19,23 +19,28 @@
 const R_deg = Math.PI / 180  // Radians per degree
 const deg_m = 90 / 1e7  // degrees per m
 
-const anchor = { lng:-117.86359, lat:33.66848 }, icon = 'plus-sign2t.png', level = 17, title = "WFBank"
+const anchor = { lng:-117.86359, lat:33.66848 }, icon = 'plus-sign2t.png', level = 15, title = "WFBank"
 var map, tile=[]
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), { center:anchor, zoom:level, });
-  new google.maps.Marker({ icon:icon, position: anchor, title: title, map, });
-  var u = toUTM(anchor); u.Eing -= u.Eing%10; u.Ning -= u.Ning%10  // 
+  map = new google.maps.Map(document.getElementById("map"), { center:anchor, zoom:level, })
+  new google.maps.Marker({ icon:icon, position:anchor, title:title, map, })
+  drawTile()
+}
+  
+drawTile() { //Draw 1x1 km tile
+  var u = toUTM(anchor); u.Eing -= u.Eing%10; u.Ning -= u.Ning%10  // UTM of anchor; sets U.Zone 
   cosLat = Math.cos(anchor.lat*R_deg)
   tile[0] = {lng:(anchor.lng -(500*deg_m)/cosLat), lat:(anchor.lat -(500*deg_m))}
   tile[1] = {lng:(anchor.lng +(500*deg_m)/cosLat), lat:(anchor.lat -(500*deg_m))}
   tile[2] = {lng:(anchor.lng +(500*deg_m)/cosLat), lat:(anchor.lat +(500*deg_m))}
   tile[3] = {lng:(anchor.lng -(500*deg_m)/cosLat), lat:(anchor.lat +(500*deg_m))}
   tile.push(tile[0])
-  new google.maps.Polyline({ path: tile, strokeColor: '#f00', strokeWeight:2, map, })
-}
+  new google.maps.Polyline({ path:tile, strokeColor:'#f00', strokeWeight:2, map, })
+}  
   
 function zoomMap(level) {map.setZoom(level)}
+
 </script>
 
 </head>
