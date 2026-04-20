@@ -26,7 +26,7 @@ function initMap() {
 // Initialize (create) the map, showing anchor
 //console.log(anchor, toLL(toUTM(anchor)))  // prove-up projections
   map = new google.maps.Map(document.getElementById("map"), { center:anchor, zoom:level, })
-	icon = {url:icon, size:new google.maps.Size(17,15), anchor:new google.maps.Point(8,8)};  // tweak position
+  icon = {url:icon, size:new google.maps.Size(17,15), anchor:new google.maps.Point(8,8)};  // tweak position
   mark = new google.maps.Marker({ icon:icon, position:anchor, title:title, map, })
 //drawATile()
   tile = drawBox(1000, "#f0f")
