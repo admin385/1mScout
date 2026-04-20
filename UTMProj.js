@@ -64,7 +64,7 @@ function toUTM (LLPnt) {//alert(typeof LLPnt + " "+Object.keys(LLPnt)[0]+Object.
      const i=(Object.keys(LLPnt)[0].indexOf("o")>0?0:1); Lon = Object.values(LLPnt)[i]; Lat = Object.values(LLPnt)[1-i];  // else both case, order immaterial
 	}
   var shem = (Lat<0?1:0); zone = Math.trunc(Lon/6) + 30, GSize10 = 10e6;  // defined 10,000 km EQ to NP
-  if((Lat>38.80&&Lat<39.05)&&(Lon>-120&&Lon<-119.875)) zone = 10; //TEST: special case for SLT basin area
+/*if((Lat>38.80&&Lat<39.05)&&(Lon>-120&&Lon<-119.875)) zone = 10; //TEST: special case for SLT basin area */
 //alert(Lon+"&"+Lat+"; "+(shem?"-":"+")+zone);
 	var lda = Lon*R_D, phi = Lat*R_D; 
 	var sinphi = Math.sin(phi); 
