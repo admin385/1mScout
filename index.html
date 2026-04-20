@@ -64,7 +64,7 @@ function drawBox(size, color) {
 function shiftMap(th) {
 // Re-anchor the map
   var a, t = th.replaceAll(" ",""), i = t.indexOf(",")
-  anchor = {lat:parseFloat(t.slice(0,i)), lng:parseFloat(t.slice(i+1)))}
+  anchor = {lat:parseFloat(t.slice(0,i)), lng:parseFloat(t.slice(i+1))}
   map.setCenter(anchor)
   mark.setMap(); mark = new google.maps.Marker({ icon:icon, position:anchor, title:"", map, })
   tile.setMap(); tile = drawBox(1000, "#f0f")
