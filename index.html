@@ -50,6 +50,7 @@ function drawBox(size, color) {
   const box=[]
   var s2 = Math.abs(size)/2
   var u = toUTM(anchor) // UTM of anchor: u.Eing & u.Ning; NB: also sets u.Zone
+  console.log(u.Zone)
   var uEm = u.Eing -= u.Eing%10, uNm = u.Ning -= u.Ning%10  // round down to 10m cell
   uEm = uEm -(size<0?0:s2); uNm = uNm -(size<0?0:s2) // set LL corner
   box[0] = toLL({Eing:uEm +0, Ning:uNm +0}, u.Zone)
@@ -60,20 +61,20 @@ function drawBox(size, color) {
   return new google.maps.Polyline({ path:box, strokeColor:color, strokeWeight:1.5, map })
 }
   
-  function shiftMap(th) {
-  // Re-anchor the map
-    var t = th.replaceAll(" ",""), i = t.indexOf(",")
-    map.setCenter(anchor = new google.maps.LatLng(parseFloat(t.slice(0,i)), parseFloat(t.slice(i+1))))
-    mark.setMap(); mark = new google.maps.Marker({ icon:icon, position:anchor, title:"", map, })
-    tile.setMap(); tile = drawBox(1000, "#f0f")
-    cell.setMap(); cell = drawBox(-10, "#ff0")
-  }
+function shiftMap(th) {
+// Re-anchor the map
+  var t = th.replaceAll(" ",""), i = t.indexOf(",")
+  map.setCenter(anchor = new google.maps.LatLng(parseFloat(t.slice(0,i)), parseFloat(t.slice(i+1))))
+  mark.setMap(); mark = new google.maps.Marker({ icon:icon, position:anchor, title:"", map, })
+  tile.setMap(); tile = drawBox(1000, "#f0f")
+  cell.setMap(); cell = drawBox(-10, "#ff0")
+}
 
-  function zoomMap(th) {
-  // Change zoom-level of the map
-    var t = th.replaceAll(" ",""); 
-    map.setZoom(parseFloat(t)) 
-  }
+function zoomMap(th) {
+// Change zoom-level of the map
+  var t = th.replaceAll(" ",""); 
+  map.setZoom(parseFloat(t)) 
+}
 
 </script>
 
