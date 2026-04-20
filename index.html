@@ -50,7 +50,7 @@ function drawBox(size, color) {
   const box=[]
   var s2 = Math.abs(size)/2
   var u = toUTM(anchor) // UTM of anchor: u.Eing & u.Ning; NB: also sets u.Zone
-  console.log(u.Zone)
+  console.log(anchor, u.Zone)
   var uEm = u.Eing -= u.Eing%10, uNm = u.Ning -= u.Ning%10  // round down to 10m cell
   uEm = uEm -(size<0?0:s2); uNm = uNm -(size<0?0:s2) // set LL corner
   box[0] = toLL({Eing:uEm +0, Ning:uNm +0}, u.Zone)
