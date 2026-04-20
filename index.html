@@ -31,6 +31,7 @@ function initMap() {
 //drawATile()
   tile = drawBox(1000, "#f0f")
   cell = drawBox(-10, "#ff0")
+map.addListener('zoom_changed', () => {console.log("zoom is:", map.getZoom())})
 }
   
 function drawATile() {
